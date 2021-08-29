@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html >
+  <head>
+    <meta charset="utf-8" />
+    <title>TrabajoSimulacion</title>
+    <script type="text/javascript" src="https://www.gstatic.com/charts/loader.js"></script>
+    <script type="text/javascript" src="js/simulations.js"></script>
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js" integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.3/umd/popper.min.js" integrity="sha384-ZMP7rVo3mIykV+2+9J3UJ46jBk0WLaUAdn689aCwoqbBJiSnjAK/l8WvCWPIPm49" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/js/bootstrap.min.js" integrity="sha384-smHYKdLADwkXOn1EmN1qk/HfnUcbVRZyYmZ4qpPea6sjB/pTJ0euyQp0Mk8ck+5T" crossorigin="anonymous"></script>
+    <style>@import url('https://fonts.googleapis.com/css?family=Lobster');</style>
+  </head>
+  <body>
+    <br>
+    <h1 style="font-family:'Lobster', cursive;text-align:center;font-size:100px;color:green;">Trabajo de Simulación.</h1>
+    <br>
+    <div class="input-group" style="justify-content: center;">
+
+          <select id="distribuciones" class="custom-select col-2" onchange="hideLlanda()">
+            <option name="Binomial" value=" Distribucion Binomial "> Distribucion Binomial </option>
+            <option name="Poisson" value=" Distribucion de Poisson "> Distribucion de Poisson </option>
+          </select>
+          <label id="labeltamm" style="margin:5px;" > Tamaño muestral =  </label ><input type="text" class="form-control col-1" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  id="tamm"></input>
+          <label id="labelene" style="margin:5px;" > n= </label ><input type="text" class="form-control col-1" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  id="ene"></input>
+          <label style="margin:5px;" id="etqP"> p= </label><input type="text" class="form-control col-1" aria-label="Small" aria-describedby="inputGroup-sizing-sm"  id="prob" ></input>
+          <input type="button" class="btn btn-success" value="Generar" style="margin-left:7px;"onsubmit="valida()" onclick="nuevoCaso()"></input>
+    </div>
+    <div  style="justify-content: center;text-align:center;">
+      <br/>
+      <pre id="errores1"></pre>
+    </div>
+
+    <div id="chart_div_2" style="width: 900px; height: 500px;display: block;margin: 0 auto;"></div>
+    <div class="input-group" style="justify-content: center;">
+      <select id="intervalos" class="custom-select col-1" onchange="">
+        <option name="(a,b)" value="(a,b)">(a,b)</option>
+        <option name="[a,b)" value="[a,b)">[a,b)</option>
+        <option name="(a,b]" value="(a,b]">(a,b]</option>
+        <option name="[a,b]" value="[a,b]">[a,b]</option>
+      </select>
+      <input type="text" class="form-control col-1" aria-label="Small" aria-describedby="inputGroup-sizing-sm" id="a"  value="a"></input>
+      <input type="text" class="form-control col-1" aria-label="Small" style="margin-left:7px;" aria-describedby="inputGroup-sizing-sm" id="b"  value="b"></input>
+      <input type="button" class="btn btn-info" value="calcular" style="margin-left:7px;" onClick="generarIntervalo()"></input>
+    </div>
+    <br/>
+    <div  style="justify-content: center;text-align:center;">
+      <p id="errores2"></p>
+    </div>
+<div style="justify-content: center;">
+<table align="center" >
+  <tr>
+    <td valign="top">
+      <div style="overflow:scroll;height:350px;">
+        <table class="table-bordered" id="tabla" cellpadding="5">
+          <thead>
+            <tr>
+            <th>X</th>
+            <th>Binomial</th>
+            <th>Normal</th>
+            <th>TCL( Binomial )</th>
+          </tr>
+          </thead>
+        </table>
+      </div>
+    </td>
+    <td valign="top">
+      <div style="overflow:scroll;height:350px;">
+        <table class="table-bordered" id="tablaFrecuencias" cellpadding="5">
+          <thead><tr><th>  Xi  </th><th>  fi  </th><th>  hi  </th><th>  Pt  </th></tr></thead>
+        </table>
+      </div>
+    </td>
+    <td valign="top">
+      <label style="margin-left:15px;" id="media"></label><br/><br/>
+      <label style="margin-left:15px;" id="varianza"></label><br/><br/>
+      <label style="margin-left:15px;" id="mediay"></label><br/><br/>
+      <label style="margin-left:15px;" id="varianzay"></label><br/><br/>
+      <label style="margin-left:15px;" id="probInt"></label><br/><br/>
+      <label style="margin-left:15px;" id="probIntt"></label><br/><br/>
+      <label style="margin-left:15px;" id="error"></label><br/><br/>
+    </td>
+  </tr>
+</table>
+</div>
+<div id="chart_div" style="width: 900px; height: 500px;margin-left:50px;display: block;margin: 0 auto;"></div>
+<p id="parrafo"></p>
+  </body>
+    <div id="footer">
+    <div class="container">
+      <p class="text-muted credit"><a href="https://github.com/licontre/TrabajoSimulacion">José María Carralero Martín.</a></p>
+    </div>
+  </div>
+</html>
