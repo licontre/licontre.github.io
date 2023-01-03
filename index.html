@@ -1,4 +1,5 @@
-<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/prompt.js"></script><script src="chrome-extension://ljdobmomdgdljniojadhoplhkpialdid/page/runScript.js"></script>
+<!DOCTYPE html>
+<html class="fontawesome-i2svg-active fontawesome-i2svg-complete"><head>
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
     <meta name="description" content="">
@@ -13,6 +14,10 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet">
     <link href="css/logos.css" rel="stylesheet">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js" integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
+
 </head>
 <body id="page-top">
     <!-- Navigation-->
@@ -46,12 +51,54 @@
                 </option><option value="#3366ff">
                 </option><option value="#ffaa00">
               </option></datalist>
+              <button id="downloadCv" class="btn"><i class="fa fa-download"></i> Download</button>
+              <script>
+            
+                function scaleCv(){
+                    document.body.classList.add('topdf')
+                }
+                function unScaleCv(){
+                    document.body.classList.remove('topdf')
+                }
+                function generatePDF() {
+                    var source = buildHTML();
+                    var opt = {
+                        margin: 10,
+                        //filename: 'myfile.pdf',
+                        jsPDF: { format: 'a4', orientation: 'portrait' }
+                    }
+                    
+                    let objs = html2pdf(source,opt);                   
+			    }
+                
+                function buildHTML(){
+                    var elementToPrint = document.createElement('div');
+                    let idsToClone = ['about','skills','experience','education','interests','awards']
+                    let i=1;
+                    for(const idToClone of idsToClone){
+                        let subElement = document.createElement('div')
+                        subElement.classList.add('element'+i)
+                        subElement.appendChild(document.getElementById(idToClone).cloneNode(true))
+                        elementToPrint.appendChild(subElement)
+                        i++
+                    }
+                    console.log(elementToPrint.innerHTML)
+                    return elementToPrint
+                }
+                let downloadBtn = document.getElementById("downloadCv");
+                downloadBtn.addEventListener('click',() => {
+                    scaleCv()
+                    generatePDF()
+                    unScaleCv()
+                });
+
+              </script>
     </nav>
     <!-- Page Content-->
-    <div class="container-fluid p-0">
+    <div class="container-fluid p-0" id="myCVContent">
         <!-- About-->
         <section class="resume-section" id="about">
-            <div class="resume-section-content">
+            <div class="resume-section-content html2pdf__page-break">
                 <h1 class="mb-0">
                     Jose M
                     <span class="text-primary">Carralero</span>
@@ -69,8 +116,8 @@
                     boost my personal and professional growth with mutually benefiting goals.
                     </p>
                 <div class="social-icons">
-                    <a class="social-icon" href="https://es.linkedin.com/in/jose-maria-carralero-martin-200099173" target="_blank" rel="noopener noreferrer"><svg class="svg-inline--fa fa-linkedin-in fa-w-14" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg><!-- <i class="fab fa-linkedin-in"></i> --></a>
-                    <a class="social-icon" href="https://github.com/licontre" target="_blank" rel="noopener noreferrer"><svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> --></a>
+                    <a class="social-icon not-show-pdf" href="https://es.linkedin.com/in/jose-maria-carralero-martin-200099173" target="_blank" rel="noopener noreferrer"><svg class="svg-inline--fa fa-linkedin-in fa-w-14" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="linkedin-in" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512" data-fa-i2svg=""><path fill="currentColor" d="M100.28 448H7.4V148.9h92.88zM53.79 108.1C24.09 108.1 0 83.5 0 53.8a53.79 53.79 0 0 1 107.58 0c0 29.7-24.1 54.3-53.79 54.3zM447.9 448h-92.68V302.4c0-34.7-.7-79.2-48.29-79.2-48.29 0-55.69 37.7-55.69 76.7V448h-92.78V148.9h89.08v40.8h1.3c12.4-23.5 42.69-48.3 87.88-48.3 94 0 111.28 61.9 111.28 142.3V448z"></path></svg><!-- <i class="fab fa-linkedin-in"></i> --></a>
+                    <a class="social-icon not-show-pdf" href="https://github.com/licontre" target="_blank" rel="noopener noreferrer"><svg class="svg-inline--fa fa-github fa-w-16" aria-hidden="true" focusable="false" data-prefix="fab" data-icon="github" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 496 512" data-fa-i2svg=""><path fill="currentColor" d="M165.9 397.4c0 2-2.3 3.6-5.2 3.6-3.3.3-5.6-1.3-5.6-3.6 0-2 2.3-3.6 5.2-3.6 3-.3 5.6 1.3 5.6 3.6zm-31.1-4.5c-.7 2 1.3 4.3 4.3 4.9 2.6 1 5.6 0 6.2-2s-1.3-4.3-4.3-5.2c-2.6-.7-5.5.3-6.2 2.3zm44.2-1.7c-2.9.7-4.9 2.6-4.6 4.9.3 2 2.9 3.3 5.9 2.6 2.9-.7 4.9-2.6 4.6-4.6-.3-1.9-3-3.2-5.9-2.9zM244.8 8C106.1 8 0 113.3 0 252c0 110.9 69.8 205.8 169.5 239.2 12.8 2.3 17.3-5.6 17.3-12.1 0-6.2-.3-40.4-.3-61.4 0 0-70 15-84.7-29.8 0 0-11.4-29.1-27.8-36.6 0 0-22.9-15.7 1.6-15.4 0 0 24.9 2 38.6 25.8 21.9 38.6 58.6 27.5 72.9 20.9 2.3-16 8.8-27.1 16-33.7-55.9-6.2-112.3-14.3-112.3-110.5 0-27.5 7.6-41.3 23.6-58.9-2.6-6.5-11.1-33.3 2.6-67.9 20.9-6.5 69 27 69 27 20-5.6 41.5-8.5 62.8-8.5s42.8 2.9 62.8 8.5c0 0 48.1-33.6 69-27 13.7 34.7 5.2 61.4 2.6 67.9 16 17.7 25.8 31.5 25.8 58.9 0 96.5-58.9 104.2-114.8 110.5 9.2 7.9 17 22.9 17 46.4 0 33.7-.3 75.4-.3 83.6 0 6.5 4.6 14.4 17.3 12.1C428.2 457.8 496 362.9 496 252 496 113.3 383.5 8 244.8 8zM97.2 352.9c-1.3 1-1 3.3.7 5.2 1.6 1.6 3.9 2.3 5.2 1 1.3-1 1-3.3-.7-5.2-1.6-1.6-3.9-2.3-5.2-1zm-10.8-8.1c-.7 1.3.3 2.9 2.3 3.9 1.6 1 3.6.7 4.3-.7.7-1.3-.3-2.9-2.3-3.9-2-.6-3.6-.3-4.3.7zm32.4 35.6c-1.6 1.3-1 4.3 1.3 6.2 2.3 2.3 5.2 2.6 6.5 1 1.3-1.3.7-4.3-1.3-6.2-2.2-2.3-5.2-2.6-6.5-1zm-11.4-14.7c-1.6 1-1.6 3.6 0 5.9 1.6 2.3 4.3 3.3 5.6 2.3 1.6-1.3 1.6-3.9 0-6.2-1.4-2.3-4-3.3-5.6-2z"></path></svg><!-- <i class="fab fa-github"></i> --></a>
                 </div>
             </div>
         </section>
@@ -79,69 +126,69 @@
         <section class="resume-section" id="skills">
             <div class="resume-section-content">
                 <h2 class="mb-5">Skills</h2>
-                <div class="subheading mb-3">Programming Languages &amp; Tools</div>
-                <div class="mb-0">Links</div><br>
-                <ul class="list-inline dev-icons">
+                <div class="subheading mb-3 not-show-pdf" >Programming Languages &amp; Tools</div>
+                <div class="mb-0 not-show-pdf" >Links</div><br>
+                <ul class="list-inline dev-icons not-show-pdf" >
                     <li class="list-inline-item">
                         <a href="assets/doc/university/index.html" onfocus="focuseandor()" target="_blank">
-                            <img alt="html" src="assets/logos/html-logo.svg" height="90">
+                            <img alt="html" src="assets/logos/html-logo.svg" class="html-logo">
                         </a> 
                         </li>
                     <li class="list-inline-item">
                         <a href="assets/doc/university/index.html" target="_blank">
-                            <img alt="CSS" src="assets/logos/css3-logo.svg" height="90">
+                            <img alt="CSS" src="assets/logos/css3-logo.svg" class="html-logo">
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <a href="https://github.com/licontre/licoScripts" target="_blank">
-                            <img src="assets/logos/javascript-logo.svg" height="80">
+                            <img src="assets/logos/javascript-logo.svg" class="js-logo">
                         </a>
                     </li>
                     <li class="list-inline-item">
                         <a href="https://github.com/licontre" target="_blank">
-                            <img src="assets/logos/git-logo.png" height="60">
+                            <img src="assets/logos/git-logo.png" class="git-logo">
                         </a>    
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/sonarqube-logo.svg" alt="SonarQube" height="50px">
+                        <img src="assets/logos/sonarqube-logo.svg" alt="SonarQube" class="sonarqube-logo">
                     </li>
                     <li class="list-inline-item">
                         <a href="https://github.com/licontre/getDiskInfoXlsx" target="_blank">
-                            <img class="python-logo" src="assets/logos/python-logo.png" height="90">
+                            <img class="python-logo" src="assets/logos/python-logo.png">
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/aws-logos.png" width="90">
+                        <img src="assets/logos/aws-logos.png" class="aws-logo">
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/tux-logo.svg" alt="linux" width="70" height="90">
+                        <img src="assets/logos/tux-logo.svg" alt="linux" class="linux-logo" >
                     </li>
                     <div class="">
                     <li class="list-inline-item">
-                        <img src="assets/logos/jira-logo.svg" height="23px" alt="Jira" class="imkt-navbar__title-logo">
+                        <img src="assets/logos/jira-logo.svg" alt="Jira" class="imkt-navbar__title-logo jira-logo" >
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/jenkins-logo.svg" alt="Jenkins" height="90px">
+                        <img src="assets/logos/jenkins-logo.svg" alt="Jenkins" class="jenkins-logo">
                     </li>
                     <li class="list-inline-item">
                         <a href="https://github.com/licontre/GrupoScout" target="_blank">
-                            <img src="assets/logos/java-logo.svg" height="90">
+                            <img src="assets/logos/java-logo.svg" class="java-logo">
                         </a>
                     </li>
                     <li class="list-inline-item">
-                        <img alt="SoapUI" src="assets/logos/soapui-logo.svg" width="60px" height="80px">
+                        <img alt="SoapUI" src="assets/logos/soapui-logo.svg" class="soapui-logo">
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/cloudera-logo.png" width="150px" height="45px" alt="Cloudera">
+                        <img src="assets/logos/cloudera-logo.png" alt="Cloudera" class="cloudera-logo">
                     </li>
                     <li class="list-inline-item">
-                       <img src="assets/logos/ansible-logo.png" alt="Ansible" width="80px" height="80px">
+                       <img src="assets/logos/ansible-logo.png" alt="Ansible" class="ansible-logo">
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/docker-official.svg" alt="Docker" width="80px" height="80px">
+                        <img src="assets/logos/docker-official.svg" alt="Docker" class="docker-logo">
                     </li>
                     <li class="list-inline-item">
-                        <a class="junit-logo">JUnit5</a>
+                        <a class="junit-logo" >JUnit5</a>
                     </li>
                     </div>
                     <li class="list-inline-item">
@@ -154,14 +201,14 @@
                         <img src="assets/logos/kibana-logo.svg" class="kibana-logo" alt="Kibana">
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/servicenow-logo.svg" alt="ServiceNow" style="width: 150px; height: 150px;">
+                        <img src="assets/logos/servicenow-logo.svg" alt="ServiceNow" class="servicenow-logo">
                     </li>
                     <li class="list-inline-item">
-                        <img src="assets/logos/Gnu-bash-logo.svg" alt="bash" width="135px">
+                        <img src="assets/logos/Gnu-bash-logo.svg" alt="bash" class="bash-logo">
                     </li>
-                    <li class="list-inline-item">
+                    <!-- <li class="list-inline-item">
                         <img class="oracle-logo" src="assets/logos/oracle-logo-red.svg">
-                    </li>
+                    </li> -->
                     <li class="list-inline-item">
                         <img src="assets/logos/cpp_logo.png" alt="C++" class="cpp-logo">
                     </li>
@@ -170,49 +217,66 @@
                 <ul class="fa-ul mb-0">
                     <li>
                         <span class="fa-li"><svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check"></i> --></span>
-                        Automation test expert with immense knowledge in Selenium and SoapUI through Java and scripting, for testing REST and SOAP services (layer three and seven).
+                        <p class="parraph">Automation test expert with immense knowledge in Selenium and SoapUI through Java and scripting, for testing REST and SOAP services (layer three and seven).</p>
                     </li>
                     <li>
                         <span class="fa-li"><svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check"></i> --></span>
-                        High knowledge to automate builds using Ansible, Docker, Groovy, GIT and Jenkins (some tools between few more) achieving Continuous Delivery and Continuous Integration.
+                        <p class="parraph">High knowledge to automate builds using Ansible, Docker, Groovy, GIT and Jenkins (some tools between few more) achieving Continuous Delivery and Continuous Integration.</p>
                     </li>
                     <li>
                         <span class="fa-li"><svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check"></i> --></span>
-                        Experienced creating and designing Functional and Regression tests at various levels of Web Applications.
+                        <p class="parraph">Experienced creating and designing Functional and Regression tests at various levels of Web Applications.</p>
                     </li>
                     <li>
                         <span class="fa-li"><svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check"></i> --></span>
-                        Strong knowledge monitoring Applications, load balancers, unauthorized access and other anomalies through Kibana.
+                        <p class="parraph">Strong knowledge monitoring Applications, load balancers, unauthorized access and other anomalies through Kibana.</p>
                     </li>
                     <li>
                         <span class="fa-li"><svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check"></i> --></span>
-                        Experienced using project management tools like Jira, where I have been maintaing dashboards, as well as, defining, scheduling and doing tasks. 
+                        <p class="parraph">using project management tools like Jira, where I have been maintaing dashboards, as well as, defining, scheduling and doing tasks. </p>
                     </li>
                     
                     <li>
                         <span class="fa-li"><svg class="svg-inline--fa fa-check fa-w-16" aria-hidden="true" focusable="false" data-prefix="fas" data-icon="check" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" data-fa-i2svg=""><path fill="currentColor" d="M173.898 439.404l-166.4-166.4c-9.997-9.997-9.997-26.206 0-36.204l36.203-36.204c9.997-9.998 26.207-9.998 36.204 0L192 312.69 432.095 72.596c9.997-9.997 26.207-9.997 36.204 0l36.203 36.204c9.997 9.997 9.997 26.206 0 36.204l-294.4 294.401c-9.998 9.997-26.207 9.997-36.204-.001z"></path></svg><!-- <i class="fas fa-check"></i> --></span>
-                        Experienced using ticketing tools like ServiceNow, where I am using to resolve incidents, manage infrastructures and give supports to different clients. 
+                        <p class="parraph">Experienced using ticketing tools like ServiceNow, where I am using to resolve incidents, manage infrastructures and give supports to different clients. </p>
                     </li>
                 </ul>
             </div>
+            <div class="html2pdf__page-break"></div>
         </section>
         <hr class="m-0">
         <!-- Experience-->
+        
         <section class="resume-section" id="experience">
             <div class="resume-section-content">
                 <h2 class="mb-5">Experience</h2>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
                         <h3 class="mb-0">Software QA Developer</h3>
-                        <div class="subheading mb-3">Adidas</div>
+                        <div class="subheading mb-3">Vodafone</div>
                         <p>
-                            
+
                         </p>
                         <p>
-                            
+
                         </p>
                     </div>
-                    <div class="flex-shrink-0"><span class="text-primary">Jun 2022 - Present</span></div>
+                    <div class="flex-shrink-0"><span class="text-primary">Jan 2023 - Present</span></div>
+                </div>
+                <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
+                    <div class="flex-grow-1">
+                        <h3 class="mb-0">Software QA Developer</h3>
+                        <div class="subheading mb-3">Adidas</div>
+                        <p>
+                            I worked as Software Developer in Test Automation, doing the automation of the product APIs, we used serenity as automation framework with Java. Here We had to deal with many different technologies, because the data displayed on adidas apps are got from different parties.
+                            We had to work with AWS, FTPs, XML messaging, SAP, and more information provided from different ecommerce services.
+                        </p>
+                        <p>
+                            Here I spent a few month because the workplace was far away from my home town, despite of that I belive I did some extra work apart of my daily taks, like a swagger validator where we use the swagger specification downloaded from that thirdparty service,
+                            and with a java library we could validate our received responses against it. I took that idea from one of my previous jobs where it was implemented on the API it self, not in the test, like I did; I followed that approach because I though it will have less impact because adidas was not mature enough.
+                        </p>
+                    </div>
+                    <div class="flex-shrink-0"><span class="text-primary">Jun 2022 - Dec 2022</span></div>
                 </div>
                 <div class="d-flex flex-column flex-md-row justify-content-between mb-5">
                     <div class="flex-grow-1">
@@ -321,6 +385,7 @@
         <!-- Awards-->
         <section class="resume-section" id="awards">
             <div class="resume-section-content">
+
                 <h2 class="mb-5">Awards &amp; Certifications</h2>
                 <ul class="fa-ul mb-0">
                     <li>
@@ -357,6 +422,4 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-easing/1.4.1/jquery.easing.min.js"></script>
     <!-- Core theme JS-->
     <script src="js/scripts.js"></script>
-
-
 </body></html>
