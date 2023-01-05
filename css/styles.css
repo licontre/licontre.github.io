@@ -74,8 +74,8 @@ ul{
     margin-bottom:1rem
 }
 .topdf ul{
-  margin-top:0;
-  margin-bottom:0;
+    margin-top:0;
+    margin-bottom:0
 }
 ul ul{
     margin-bottom:0
@@ -126,8 +126,8 @@ label{
     margin-bottom:.5rem
 }
 .topdf label{
-  display:inline-block;
-  margin-bottom:0;
+    display:inline-block;
+    margin-bottom:0
 }
 button{
     border-radius:0
@@ -192,8 +192,8 @@ input[type=checkbox],input[type=radio]{
     line-height:1.2;
     color:#343a40
 }
-.topdf .h1,.h2,.h3,.h4,.h5,.h6,h1,h2,h3,h4,h5,h6{
-  margin-bottom:0rem;
+.h2,.h3,.h4,.h5,.h6,.topdf .h1,h1,h2,h3,h4,h5,h6{
+    margin-bottom:0
 }
 .h1,h1{
     font-size:6rem
@@ -244,8 +244,8 @@ hr{
     border-top:1px solid rgba(0,0,0,.1)
 }
 .topdf hr{
-  margin-top:0rem;
-  margin-bottom:0rem;
+    margin-top:0;
+    margin-bottom:0
 }
 .list-inline{
     padding-left:0;
@@ -259,7 +259,7 @@ hr{
     margin-right:.5rem
 }
 .topdf .list-inline-item:not(:last-child){
-  margin-right:0rem
+    margin-right:0
 }
 .img-fluid{
     max-width:100%;
@@ -281,15 +281,15 @@ a>code{
     margin-left:auto
 }
 .topdf .container{
-  width:100%;
-  padding-right:0rem;
-  padding-left:0rem;
-  margin-right:auto;
-  margin-left:auto;
-  margin-top: 0;
-  margin-bottom: 0;
-  padding-top: 0;
-  padding-bottom: 0;
+    width:100%;
+    padding-right:0;
+    padding-left:0;
+    margin-right:auto;
+    margin-left:auto;
+    margin-top:0;
+    margin-bottom:0;
+    padding-top:0;
+    padding-bottom:0
 }
 @media (min-width:576px){
     .container{
@@ -658,13 +658,13 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     white-space:nowrap
 }
 .topdf .navbar-brand{
-  display:inline-block;
-  padding-top:0rem;
-  padding-bottom:0rem;
-  margin-right:1rem;
-  font-size:1.25rem;
-  line-height:inherit;
-  white-space:nowrap
+    display:inline-block;
+    padding-top:0;
+    padding-bottom:0;
+    margin-right:1rem;
+    font-size:1.25rem;
+    line-height:inherit;
+    white-space:nowrap
 }
 .navbar-brand:focus,.navbar-brand:hover{
     text-decoration:none
@@ -947,8 +947,8 @@ input[type=button].btn-block,input[type=reset].btn-block,input[type=submit].btn-
     border-top-width:1px
 }
 .topdf .list-group-item+.list-group-item.active{
-  margin-top:0px;
-  border-top-width:1px
+    margin-top:0;
+    border-top-width:1px
 }
 .list-group-horizontal{
     flex-direction:row
@@ -1563,7 +1563,7 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     margin:.25rem!important
 }
 .topdf .m-1{
-  margin:0rem!important
+    margin:0!important
 }
 .my-1{
     margin-top:.25rem!important
@@ -1571,8 +1571,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .mx-1{
     margin-right:.25rem!important
 }
-.topdf .mb-1,.my-1{
-    margin-bottom:0rem!important
+.my-1,.topdf .mb-1{
+    margin-bottom:0!important
 }
 .mb-1,.my-1{
     margin-bottom:.25rem!important
@@ -1581,7 +1581,7 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     margin-left:.25rem!important
 }
 .topdf .m-2{
-    margin:0rem!important
+    margin:0!important
 }
 .m-2{
     margin:.5rem!important
@@ -1590,7 +1590,7 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     margin-top:.5rem!important
 }
 .topdf .my-2{
-    margin-top:0rem!important
+    margin-top:0!important
 }
 .mx-2{
     margin-right:.5rem!important
@@ -1598,8 +1598,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .mb-2,.my-2{
     margin-bottom:.5rem!important
 }
-.topdf .mb-2,.my-2{
-    margin-bottom:0rem!important
+.my-2,.topdf .mb-2{
+    margin-bottom:0!important
 }
 .mx-2{
     margin-left:.5rem!important
@@ -1610,12 +1610,11 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .my-3{
     margin-top:1rem!important
 }
-
 .topdf .m-3{
-    margin:0rem!important
+    margin:0!important
 }
 .topdf .my-3{
-    margin-top:0rem!important
+    margin-top:0!important
 }
 .mx-3{
     margin-right:1rem!important
@@ -1623,24 +1622,23 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .mb-3,.my-3{
     margin-bottom:1rem!important
 }
-.topdf .mb-3,.my-3{
-    margin-bottom:0rem!important
+.my-3,.topdf .mb-3{
+    margin-bottom:0!important
 }
 .mx-3{
     margin-left:1rem!important
 }
-
 .m-4{
     margin:1.5rem!important
 }
 .topdf .m-4{
-  margin:0rem!important
+    margin:0!important
 }
 .my-4{
     margin-top:1.5rem!important
 }
 .topdf .my-4{
-  margin-top:0rem!important
+    margin-top:0!important
 }
 .mx-4{
     margin-right:1.5rem!important
@@ -1648,9 +1646,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .mb-4,.my-4{
     margin-bottom:1.5rem!important
 }
-
-.topdf .mb-4,.my-4{
-  margin-bottom:0rem!important
+.my-4,.topdf .mb-4{
+    margin-bottom:0!important
 }
 .mx-4{
     margin-left:1.5rem!important
@@ -1659,13 +1656,13 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     margin:3rem!important
 }
 .topdf .m-5{
-    margin:0rem!important
+    margin:0!important
 }
 .my-5{
     margin-top:3rem!important
 }
 .topdf .my-5{
-  margin-top:0rem!important
+    margin-top:0!important
 }
 .mx-5{
     margin-right:3rem!important
@@ -1673,8 +1670,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .mb-5,.my-5{
     margin-bottom:3rem!important
 }
-.topdf .mb-5,.my-5{
-    margin-bottom:3rem!important
+.topdf .my-5,.mb-5{
+    margin-bottom:0rem!important
 }
 .mx-5{
     margin-left:3rem!important
@@ -1751,7 +1748,7 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .mb-auto,.my-auto{
     margin-bottom:auto!important
 }
-.topdf .mb-auto,.my-auto{
+.my-auto,.topdf .mb-auto{
     margin-bottom:0!important
 }
 .mx-auto{
@@ -1780,10 +1777,10 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin-top:.25rem!important
     }
     .topdf .m-sm-1{
-      margin:0rem!important
+        margin:0!important
     }
     .topdf .my-sm-1{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-sm-1{
         margin-right:.25rem!important
@@ -1791,8 +1788,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-sm-1,.my-sm-1{
         margin-bottom:.25rem!important
     }
-    .topdf .mb-sm-1,.my-sm-1{
-        margin-bottom:0rem!important
+    .my-sm-1,.topdf .mb-sm-1{
+        margin-bottom:0!important
     }
     .mx-sm-1{
         margin-left:.25rem!important
@@ -1801,13 +1798,13 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin:.5rem!important
     }
     .topdf .m-sm-2{
-      margin:0rem!important
+        margin:0!important
     }
     .my-sm-2{
         margin-top:.5rem!important
     }
     .topdf .my-sm-2{
-        margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-sm-2{
         margin-right:.5rem!important
@@ -1815,8 +1812,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-sm-2,.my-sm-2{
         margin-bottom:.5rem!important
     }
-    .topdf .mb-sm-2,.my-sm-2{
-      margin-bottom:0rem!important
+    .my-sm-2,.topdf .mb-sm-2{
+        margin-bottom:0!important
     }
     .mx-sm-2{
         margin-left:.5rem!important
@@ -1825,13 +1822,13 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin:1rem!important
     }
     .topdf .m-sm-3{
-        margin:0rem!important
+        margin:0!important
     }
     .my-sm-3{
         margin-top:1rem!important
     }
     .topdf .my-sm-3{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-sm-3{
         margin-right:1rem!important
@@ -1839,8 +1836,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-sm-3,.my-sm-3{
         margin-bottom:1rem!important
     }
-    .topdf .mb-sm-3,.my-sm-3{
-      margin-bottom:0rem!important
+    .my-sm-3,.topdf .mb-sm-3{
+        margin-bottom:0!important
     }
     .mx-sm-3{
         margin-left:1rem!important
@@ -1852,10 +1849,10 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin-top:1.5rem!important
     }
     .topdf .m-sm-4{
-      margin:0rem!important
+        margin:0!important
     }
     .topdf .my-sm-4{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-sm-4{
         margin-right:1.5rem!important
@@ -1863,8 +1860,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-sm-4,.my-sm-4{
         margin-bottom:1.5rem!important
     }
-    .topdf .mb-sm-4,.my-sm-4{
-      margin-bottom:0rem!important
+    .my-sm-4,.topdf .mb-sm-4{
+        margin-bottom:0!important
     }
     .mx-sm-4{
         margin-left:1.5rem!important
@@ -1876,10 +1873,10 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin-top:3rem!important
     }
     .topdf .m-sm-5{
-      margin:0rem!important
+        margin:0!important
     }
     .my-sm-5{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-sm-5{
         margin-right:3rem!important
@@ -1887,8 +1884,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-sm-5,.my-sm-5{
         margin-bottom:3rem!important
     }
-    .topdf .mb-sm-5,.my-sm-5{
-      margin-bottom:0rem!important
+    .my-sm-5,.topdf .mb-sm-5{
+        margin-bottom:0!important
     }
     .mx-sm-5{
         margin-left:3rem!important
@@ -1962,21 +1959,20 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mx-sm-auto{
         margin-left:auto!important
     }
-
     .topdf .m-sm-auto{
-      margin:0rem!important
+        margin:0!important
     }
     .topdf .my-sm-auto{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .topdf .mx-sm-auto{
-      margin-right:0rem!important
+        margin-right:0!important
     }
-    .topdf .mb-sm-auto,.my-sm-auto{
-      margin-bottom:0rem!important
+    .my-sm-auto,.topdf .mb-sm-auto{
+        margin-bottom:0!important
     }
     .topdf .mx-sm-auto{
-      margin-left:0rem!important
+        margin-left:0!important
     }
 }
 @media (min-width:768px){
@@ -2002,10 +1998,10 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin-top:.25rem!important
     }
     .topdf .m-md-1{
-      margin:0rem!important
+        margin:0!important
     }
     .topdf .my-md-1{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-md-1{
         margin-right:.25rem!important
@@ -2013,8 +2009,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-md-1,.my-md-1{
         margin-bottom:.25rem!important
     }
-    .topdf .mb-md-1,.my-md-1{
-      margin-bottom:0rem!important
+    .my-md-1,.topdf .mb-md-1{
+        margin-bottom:0!important
     }
     .mx-md-1{
         margin-left:.25rem!important
@@ -2026,10 +2022,10 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin-top:.5rem!important
     }
     .topdf .m-md-2{
-      margin:0rem!important
+        margin:0!important
     }
     .topdf .my-md-2{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-md-2{
         margin-right:.5rem!important
@@ -2037,8 +2033,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-md-2,.my-md-2{
         margin-bottom:.5rem!important
     }
-    .topdf .mb-md-2,.my-md-2{
-      margin-bottom:0rem!important
+    .my-md-2,.topdf .mb-md-2{
+        margin-bottom:0!important
     }
     .mx-md-2{
         margin-left:.5rem!important
@@ -2047,13 +2043,13 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin:1rem!important
     }
     .topdf .m-md-3{
-      margin:0rem!important
+        margin:0!important
     }
     .my-md-3{
         margin-top:1rem!important
     }
     .topdf .my-md-3{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-md-3{
         margin-right:1rem!important
@@ -2061,8 +2057,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-md-3,.my-md-3{
         margin-bottom:1rem!important
     }
-    .topdf .mb-md-3,.my-md-3{
-      margin-bottom:0rem!important
+    .my-md-3,.topdf .mb-md-3{
+        margin-bottom:0!important
     }
     .mx-md-3{
         margin-left:1rem!important
@@ -2071,13 +2067,13 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin:1.5rem!important
     }
     .topdf .m-md-4{
-      margin:0rem!important
+        margin:0!important
     }
     .my-md-4{
         margin-top:1.5rem!important
     }
     .topdf .my-md-4{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-md-4{
         margin-right:1.5rem!important
@@ -2085,8 +2081,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-md-4,.my-md-4{
         margin-bottom:1.5rem!important
     }
-    .topdf .mb-md-4,.my-md-4{
-      margin-bottom:0rem!important
+    .my-md-4,.topdf .mb-md-4{
+        margin-bottom:0!important
     }
     .mx-md-4{
         margin-left:1.5rem!important
@@ -2095,13 +2091,13 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin:3rem!important
     }
     .topdf .m-md-5{
-      margin:0rem!important
+        margin:0!important
     }
     .my-md-5{
         margin-top:3rem!important
     }
     .topdf .my-md-5{
-      margin-top:0rem!important
+        margin-top:0!important
     }
     .mx-md-5{
         margin-right:3rem!important
@@ -2109,8 +2105,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-md-5,.my-md-5{
         margin-bottom:3rem!important
     }
-    .topdf .mb-md-5,.my-md-5{
-      margin-bottom:0rem!important
+    .my-md-5,.topdf .mb-md-5{
+        margin-bottom:0!important
     }
     .mx-md-5{
         margin-left:3rem!important
@@ -2176,10 +2172,10 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
         margin-top:auto!important
     }
     .topdf .m-md-auto{
-      margin:0!important
+        margin:0!important
     }
     .topdf .my-md-auto{
-      margin-top:0!important
+        margin-top:0!important
     }
     .mx-md-auto{
         margin-right:auto!important
@@ -2187,8 +2183,8 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
     .mb-md-auto,.my-md-auto{
         margin-bottom:auto!important
     }
-    .topdf .mb-md-auto,.my-md-auto{
-      margin-bottom:0!important
+    .my-md-auto,.topdf .mb-md-auto{
+        margin-bottom:0!important
     }
     .mx-md-auto{
         margin-left:auto!important
@@ -2426,9 +2422,6 @@ a.text-dark:focus,a.text-dark:hover{
 }
 .text-body{
     color:#212529!important
-}
-.text-break{
-    word-wrap:break-word!important
 }
 .visible{
     visibility:visible!important
@@ -2803,7 +2796,7 @@ section.resume-section .resume-section-content{
 }
 .topdf .mb-3{
     page-break-inside:avoid;
-    font-size:9pt;
+    font-size:9pt
 }
 .topdf p{
     font-size:8pt;
@@ -2892,48 +2885,18 @@ section.resume-section .resume-section-content{
 .my-1,.topdf .mb-1{
     margin-bottom:0!important
 }
-
-
-.element1{
-    position:absolute;
-    margin: 0;
-    padding: 0;
-}
-.element2{
-    position: relative;
-    top: 200px;
-    margin: 0;
-    padding: 0;
-}
-.element3{
-    position: relative;
-    top:-350px;
-    margin: 0;
-    padding: 0;
-}
-.element4{
-    position: relative;
-    top:-230px;
-    margin: 0;
-    padding: 0;
-}
-.element5{
-    position: relative;
-    top:-800px;
-    margin: 0;
-    padding: 0;
-}
-.element6{
-    position: relative;
-    top:-1600px;
-    margin: 0;
-    padding: 0;
-}
-.topdf *, html {
+.topdf *,html{
     margin:0;
-    padding:0;  
+    padding:0
 }
-.topdf *, *:before, *:after {
-    margin: 0;
-    padding: 0;
-    }
+.topdf *,:after,:before{
+    margin:0;
+    padding:0
+}
+.row{
+    display:flex!important
+}
+.col{
+    display:block!important;
+    flex:1
+}

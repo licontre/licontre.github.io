@@ -53,7 +53,6 @@
               </option></datalist>
               <button id="downloadCv" class="btn"><i class="fa fa-download"></i> Download</button>
               <script>
-            
                 function scaleCv(){
                     document.body.classList.add('topdf')
                 }
@@ -64,20 +63,22 @@
                     var source = buildHTML();
                     var opt = {
                         margin: 10,
-                        //filename: 'myfile.pdf',
-                        jsPDF: { format: 'a4', orientation: 'portrait' }
+                        filename: 'resumeJMCarraleroM.pdf',
+                        jsPDF: { format: 'a4', orientation: 'portrait',unit:'mm'},
+                        html2canvas: {scale:2,dpi:300 },
+                        pagebreak: { mode: ['avoid-all'] }
                     }
-                    
                     let objs = html2pdf(source,opt);                   
 			    }
                 
                 function buildHTML(){
                     var elementToPrint = document.createElement('div');
+                    elementToPrint.classList.add('col')
                     let idsToClone = ['about','skills','experience','education','interests','awards']
                     let i=1;
                     for(const idToClone of idsToClone){
                         let subElement = document.createElement('div')
-                        subElement.classList.add('element'+i)
+                        subElement.classList.add('row')
                         subElement.appendChild(document.getElementById(idToClone).cloneNode(true))
                         elementToPrint.appendChild(subElement)
                         i++
@@ -98,7 +99,7 @@
     <div class="container-fluid p-0" id="myCVContent">
         <!-- About-->
         <section class="resume-section" id="about">
-            <div class="resume-section-content html2pdf__page-break">
+            <div class="resume-section-content ">
                 <h1 class="mb-0">
                     Jose M
                     <span class="text-primary">Carralero</span>
@@ -242,7 +243,6 @@
                     </li>
                 </ul>
             </div>
-            <div class="html2pdf__page-break"></div>
         </section>
         <hr class="m-0">
         <!-- Experience-->
