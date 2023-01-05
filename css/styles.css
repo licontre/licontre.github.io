@@ -1571,6 +1571,7 @@ a.bg-dark:focus,a.bg-dark:hover,button.bg-dark:focus,button.bg-dark:hover{
 .mx-1{
     margin-right:.25rem!important
 }
+
 .my-1,.topdf .mb-1{
     margin-bottom:0!important
 }
@@ -2620,29 +2621,29 @@ section.resume-section .resume-section-content{
     font-size:15px
 }
 .python-logo{
-    height:90
+    height:90px;
 }
 .kibana-logo{
-    height:70px
+    height:70px;
 }
 .html-logo{
-    height:90px
+    height:90px;
 }
 .js-logo{
-    height:80
+    height:80px;
 }
 .git-logo{
-    height:60
+    height:60px;
 }
 .sonarqube-logo{
     height:50px
 }
 .linux-logo{
-    width:70;
-    height:90
+    width:70px;
+    height:90px;
 }
 .aws-logo{
-    width:90
+    width:90px;
 }
 .jira-logo{
     height:23px
@@ -2651,7 +2652,7 @@ section.resume-section .resume-section-content{
     height:90px
 }
 .java-logo{
-    height:90
+    height:90px;
 }
 .soapui-logo{
     width:60px;
@@ -2796,7 +2797,7 @@ section.resume-section .resume-section-content{
 }
 .topdf .mb-3{
     page-break-inside:avoid;
-    font-size:9pt
+    font-size:9pt;
 }
 .topdf p{
     font-size:8pt;
