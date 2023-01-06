@@ -13,7 +13,6 @@
     <link href="https://fonts.googleapis.com/css?family=Muli:400,400i,800,800i" rel="stylesheet" type="text/css">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="css/styles.css" rel="stylesheet">
-    <link href="css/logos.css" rel="stylesheet">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/1.3.4/jspdf.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.8.0/html2pdf.bundle.min.js" integrity="sha512-w3u9q/DeneCSwUDjhiMNibTRh/1i/gScBVp2imNVAMCt6cUHIw6xzhzcPFIaL3Q1EbI2l+nu17q2aLJJLo4ZYg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js" integrity="sha512-BNaRQnYJYiPSqHHDb58B0yaPfCu+Wgds8Gp/gU33kqBtgNS4tSPHuGibyoeqMV/TJlSKda6FXzoEyYGjTe+vXA==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
@@ -53,6 +52,16 @@
               </option></datalist>
               <button id="downloadCv" class="btn"><i class="fa fa-download"></i> Download</button>
               <script>
+                window.onload=() => {
+                    if(isSubWindowCreated()){
+                        scaleCv()
+                        generatePDF()
+                        unScaleCv()
+                        localStorage.removeItem("subWindowCreated");
+                        setTimeout(()=>{window.close()},3000);
+                    }
+                }
+                
                 function scaleCv(){
                     document.body.classList.add('topdf')
                 }
@@ -68,8 +77,17 @@
                         html2canvas: {scale:2,dpi:300 },
                         pagebreak: { mode: ['avoid-all'] }
                     }
-                    let objs = html2pdf(source,opt);                   
+                    let objs = html2pdf(source,opt);
 			    }
+                function isSubWindowCreated(){
+                    return localStorage.getItem("subWindowCreated");
+                }
+                function createSubWindow(){
+                    myWindow = window.open("", "", "width=375, height=667");
+                    myWindow.resizeTo(375, 667);    
+                    myWindow.location='index.html'
+                    localStorage.setItem("subWindowCreated", true);
+                }
                 
                 function buildHTML(){
                     var elementToPrint = document.createElement('div');
@@ -88,11 +106,14 @@
                 }
                 let downloadBtn = document.getElementById("downloadCv");
                 downloadBtn.addEventListener('click',() => {
-                    scaleCv()
-                    generatePDF()
-                    unScaleCv()
+                    if(isSubWindowCreated()){
+                        scaleCv()
+                        generatePDF()
+                        unScaleCv()
+                    }else{
+                        createSubWindow();
+                    }
                 });
-
               </script>
     </nav>
     <!-- Page Content-->
